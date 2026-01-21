@@ -52,6 +52,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/14", "_blank")}
                   onMouseEnter={(e) => handleHover("email", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -61,6 +62,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/13", "_blank")}
                   onMouseEnter={(e) => handleHover("captain", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -70,6 +72,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/11", "_blank")}
                   onMouseEnter={(e) => handleHover("office", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -86,6 +89,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/20", "_blank")}
                   onMouseEnter={(e) => handleHover("hvac", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -95,6 +99,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/14", "_blank")}
                   onMouseEnter={(e) => handleHover("generator", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -104,6 +109,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/28", "_blank")}
                   onMouseEnter={(e) => handleHover("propulsion", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -113,6 +119,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/16", "_blank")}
                   onMouseEnter={(e) => handleHover("navigation", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -122,6 +129,7 @@ function Home() {
 
                 <div
                   className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/29", "_blank")}
                   onMouseEnter={(e) => handleHover("gps", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -138,6 +146,8 @@ function Home() {
 
                 <div
                   className="card"
+                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/18", "_blank")}
+
                   onMouseEnter={(e) => handleHover("cctv", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
