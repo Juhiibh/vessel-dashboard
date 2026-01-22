@@ -20,7 +20,10 @@ function Home() {
 
   return (
     <div className="home-container">
+       <div className="header-container">
       <h1 className="title">VESSEL DIGITAL ECOSYSTEM</h1>
+</div>
+    <div className="image-container">
 
       <div className="image-wrapper">
         <img src={vesselImage} alt="Vessel System" className="vessel-image" />
@@ -38,6 +41,7 @@ function Home() {
           <span></span>
         </div>
       </div>
+       </div>
 
       {/* Modal Overlay */}
       {activeModal && (
@@ -284,6 +288,7 @@ function Home() {
         </div>
       )}
     </div>
+   
   );
 }
 
