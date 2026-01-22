@@ -20,7 +20,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1 className="title">VESSEL SYSTEM</h1>
+      <h1 className="title">VESSEL DIGITAL ECOSYSTEM</h1>
 
       <div className="image-wrapper">
         <img src={vesselImage} alt="Vessel System" className="vessel-image" />
