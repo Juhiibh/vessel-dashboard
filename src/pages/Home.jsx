@@ -3,12 +3,15 @@ import vesselImage from "../assets/vessel.png";
 import "./Home.css";
 
 function Home() {
-  const [activeModal, setActiveModal] = useState(null);
-  const [hoverDialog, setHoverDialog] = useState(null);
-  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
+  // ===== State Management =====
+  const [activeModal, setActiveModal] = useState(null);     // Controls which main modal is open (IT / OT / IoT)
+  const [hoverDialog, setHoverDialog] = useState(null);     // Controls which hover info dialog is visible
+  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 }); // Stores hover dialog screen position
 
+  // ===== Close any open modal =====
   const closeModal = () => setActiveModal(null);
 
+  // ===== Handle hover on cards to position floating dialog =====
   const handleHover = (type, event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setHoverPos({
@@ -20,42 +23,60 @@ function Home() {
 
   return (
     <div className="home-container">
-       <div className="header-container">
-      <h1 className="title">VESSEL DIGITAL ECOSYSTEM</h1>
-</div>
-    <div className="image-container">
 
-      <div className="image-wrapper">
-        <img src={vesselImage} alt="Vessel System" className="vessel-image" />
+      {/* ===== Sticky Header Bar ===== */}
+      <div className="header-container">
+        <h1 className="title">VESSEL DIGITAL ECOSYSTEM</h1>
+      </div>
 
-        {/* Click Areas */}
-        <div className="click-area it" onClick={() => setActiveModal("it")}>
-          <span></span>
-        </div>
+      {/* ===== Vessel Architecture Quick Access Button ===== */}
+      {/* Opens the Draw.io architecture HTML directly */}
+      <div 
+        className="arch-pill"
+        style={{
+          position: "fixed",
+          top: "100px",
+          left: "20px",
+          zIndex: 9999,
+          padding: "12px 20px",
+          background: "cyan",
+          color: "black",
+          fontWeight: "bold",
+          borderRadius: "20px",
+          cursor: "pointer"
+        }}
+        onClick={() => {
+          console.log("PILL CLICKED");
+          window.location.href = "/architecture.html";
+        }}
+      >
+        Vessel Architecture
+      </div>
 
-        <div className="click-area iot" onClick={() => setActiveModal("iot")}>
-          <span></span>
-        </div>
+      {/* ===== Main Vessel Image Section ===== */}
+      <div className="image-container">
+        <div className="image-wrapper">
+          <img src={vesselImage} alt="Vessel System" className="vessel-image" />
 
-        <div className="click-area ot" onClick={() => setActiveModal("ot")}>
-          <span></span>
+          {/* Clickable zones on vessel image */}
+          <div className="click-area it" onClick={() => setActiveModal("it")}></div>
+          <div className="click-area iot" onClick={() => setActiveModal("iot")}></div>
+          <div className="click-area ot" onClick={() => setActiveModal("ot")}></div>
         </div>
       </div>
-       </div>
 
-      {/* Modal Overlay */}
+      {/* ===== Main Modal Overlay ===== */}
       {activeModal && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-box" onClick={(e) => e.stopPropagation()}>
             <button className="close-btn" onClick={closeModal}>✕</button>
 
-            {/* IT Modal */}
+            {/* ===== IT Modal ===== */}
             {activeModal === "it" && (
               <>
                 <h2>IT Systems</h2>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/14", "_blank")}
                   onMouseEnter={(e) => handleHover("email", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -64,8 +85,7 @@ function Home() {
                   <p>Handles vessel communications and email services.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/13", "_blank")}
                   onMouseEnter={(e) => handleHover("captain", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -74,8 +94,7 @@ function Home() {
                   <p>Bridge workstation for planning and reporting.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/11", "_blank")}
                   onMouseEnter={(e) => handleHover("office", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -86,13 +105,12 @@ function Home() {
               </>
             )}
 
-            {/* OT Modal */}
+            {/* ===== OT Modal ===== */}
             {activeModal === "ot" && (
               <>
                 <h2>OT Systems</h2>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/20", "_blank")}
                   onMouseEnter={(e) => handleHover("hvac", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -101,8 +119,7 @@ function Home() {
                   <p>Heating and ventilation control.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/14", "_blank")}
                   onMouseEnter={(e) => handleHover("generator", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -111,8 +128,7 @@ function Home() {
                   <p>Electrical power generation.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/28", "_blank")}
                   onMouseEnter={(e) => handleHover("propulsion", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -121,8 +137,7 @@ function Home() {
                   <p>Controls ship movement.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/16", "_blank")}
                   onMouseEnter={(e) => handleHover("navigation", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -131,8 +146,7 @@ function Home() {
                   <p>Route and heading management.</p>
                 </div>
 
-                <div
-                  className="card"
+                <div className="card"
                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/29", "_blank")}
                   onMouseEnter={(e) => handleHover("gps", e)}
                   onMouseLeave={() => setHoverDialog(null)}
@@ -143,15 +157,13 @@ function Home() {
               </>
             )}
 
-            {/* IoT Modal */}
+            {/* ===== IoT Modal ===== */}
             {activeModal === "iot" && (
               <>
                 <h2>IoT Systems</h2>
 
-                <div
-                  className="card"
-                   onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/18", "_blank")}
-
+                <div className="card"
+                  onClick={() => window.open("https://172.16.31.158/ui/#/host/vms/18", "_blank")}
                   onMouseEnter={(e) => handleHover("cctv", e)}
                   onMouseLeave={() => setHoverDialog(null)}
                 >
@@ -160,135 +172,115 @@ function Home() {
                 </div>
               </>
             )}
+
           </div>
         </div>
       )}
 
-      {/* Hover Dialog Overlay */}
+      {/* ===== Floating Hover Information Dialog ===== */}
       {hoverDialog && (
         <div className="hover-modal-overlay">
           <div
             className="hover-modal-box"
-            style={{
-              left: `${hoverPos.x}px`,
-              top: `${hoverPos.y}px`
-            }}
+            style={{ left: `${hoverPos.x}px`, top: `${hoverPos.y}px` }}
           >
+
+            {/* Individual hover content blocks */}
             {hoverDialog === "email" && (
               <>
-               
-               <p>Main external connectivity point.</p>
-<p>Used for ship–shore communication.</p>
-<p>High risk of phishing and malware.</p>
-<p>Often connected to shore networks.</p>
-<p>Requires strict security controls.</p>
-
+                <p>Main external connectivity point.</p>
+                <p>Used for ship–shore communication.</p>
+                <p>High risk of phishing and malware.</p>
+                <p>Often connected to shore networks.</p>
+                <p>Requires strict security controls.</p>
               </>
             )}
 
             {hoverDialog === "captain" && (
               <>
-               
                 <p>Used for voyage planning and reporting.</p>
-<p>Stores sensitive operational data.</p>
-<p>Supports compliance documentation.</p>
-<p>High impact if compromised.</p>
-<p>Needs strong authentication and logging.</p>
-
+                <p>Stores sensitive operational data.</p>
+                <p>Supports compliance documentation.</p>
+                <p>High impact if compromised.</p>
+                <p>Needs strong authentication and logging.</p>
               </>
             )}
 
             {hoverDialog === "office" && (
               <>
-               
                 <p>Handles administrative operations.</p>
-<p>Manages crew and cargo records.</p>
-<p>Frequently uses external files/USB.</p>
-<p>Common ransomware target.</p>
-<p>Must be isolated from OT systems.</p>
-
+                <p>Manages crew and cargo records.</p>
+                <p>Frequently uses external files/USB.</p>
+                <p>Common ransomware target.</p>
+                <p>Must be isolated from OT systems.</p>
               </>
             )}
 
             {hoverDialog === "hvac" && (
               <>
-              
-               <p>Controls heating and ventilation onboard.</p>
-<p>Maintains environmental conditions.</p>
-<p>Often PLC/SCADA controlled.</p>
-<p>Cyber compromise affects habitability.</p>
-<p>Requires OT network protection.</p>
-
+                <p>Controls heating and ventilation onboard.</p>
+                <p>Maintains environmental conditions.</p>
+                <p>Often PLC/SCADA controlled.</p>
+                <p>Cyber compromise affects habitability.</p>
+                <p>Requires OT network protection.</p>
               </>
             )}
 
             {hoverDialog === "generator" && (
               <>
-             
                 <p>Generates electrical power for the vessel.</p>
-<p>Supports all critical systems.</p>
-<p>Digitally monitored and controlled.</p>
-<p>Attack may cause power loss.</p>
-<p>High safety impact system.</p>
-
+                <p>Supports all critical systems.</p>
+                <p>Digitally monitored and controlled.</p>
+                <p>Attack may cause power loss.</p>
+                <p>High safety impact system.</p>
               </>
             )}
 
             {hoverDialog === "propulsion" && (
               <>
-                
                 <p>Controls engines and ship movement.</p>
-<p>Directly affects maneuverability.</p>
-<p>Uses control and automation systems.</p>
-<p>Cyber attack risks loss of control.</p>
-<p>Safety-critical OT asset.</p>
-
+                <p>Directly affects maneuverability.</p>
+                <p>Uses control and automation systems.</p>
+                <p>Cyber attack risks loss of control.</p>
+                <p>Safety-critical OT asset.</p>
               </>
             )}
 
             {hoverDialog === "navigation" && (
               <>
-               
                 <p>Manages route and heading.</p>
-<p>Integrates radar, ECDIS, and sensors.</p>
-<p>Supports collision avoidance.</p>
-<p>Data integrity is essential.</p>
-<p>Target for spoofing and tampering.</p>
-
+                <p>Integrates radar, ECDIS, and sensors.</p>
+                <p>Supports collision avoidance.</p>
+                <p>Data integrity is essential.</p>
+                <p>Target for spoofing and tampering.</p>
               </>
             )}
 
             {hoverDialog === "gps" && (
               <>
-               
-               <p>Provides position and timing data.</p>
-<p>Core input to navigation systems.</p>
-<p>Vulnerable to spoofing and jamming.</p>
-<p>False data misleads vessel location.</p>
-<p>Needs signal and system monitoring.</p>
-
+                <p>Provides position and timing data.</p>
+                <p>Core input to navigation systems.</p>
+                <p>Vulnerable to spoofing and jamming.</p>
+                <p>False data misleads vessel location.</p>
+                <p>Needs signal and system monitoring.</p>
               </>
             )}
 
             {hoverDialog === "cctv" && (
               <>
-               
                 <p>IP-based cameras monitor critical ship areas.</p>
-
-<p>Enhances safety and security.</p>
-
-<p>Uses ship network / satellite links.</p>
-
-<p>Risks: hacking, data leakage, network entry.</p>
-
-<p>Secure with segregation and strong access control.</p>
+                <p>Enhances safety and security.</p>
+                <p>Uses ship network / satellite links.</p>
+                <p>Risks: hacking, data leakage, network entry.</p>
+                <p>Secure with segregation and strong access control.</p>
               </>
             )}
+
           </div>
         </div>
       )}
+
     </div>
-   
   );
 }
 
