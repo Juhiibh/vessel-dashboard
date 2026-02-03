@@ -3,11 +3,15 @@ import Home from "./pages/Home";
 import ITPage from "./pages/ITPage";
 import IoTPage from "./pages/IoTPage";
 import OTPage from "./pages/OTPage";
+import ArchitecturePage from "./pages/ArchitecturePage";
+
+
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/architecture" element={<ArchitecturePage />} />
       <Route path="/it" element={<ITPage />} />
       <Route path="/iot" element={<IoTPage />} />
       <Route path="/ot" element={<OTPage />} />
