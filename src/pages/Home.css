@@ -121,7 +121,7 @@
 }
 
 /* IoT clickable zone coordinates */
-.iot {
+.ot {
   top: 23.5%;
   left: 61.6%;
   width: 130px;
@@ -129,7 +129,7 @@
 }
 
 /* OT clickable zone coordinates */
-.ot {
+.iot {
   top: 23.5%;
   left: 44.2%;
   width: 180px;
